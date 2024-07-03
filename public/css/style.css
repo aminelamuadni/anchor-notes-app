@@ -5,22 +5,72 @@ main {
 
 aside,
 main {
+    max-height: calc(100vh - 60px - 56px);
+}
+
+body:not(:has(.navbar)) aside,
+body:not(:has(.navbar)) main {
     max-height: calc(100vh - 56px);
 }
 
 @media (max-width: 992px) {
     aside,
     main {
+        max-height: calc(100vh - 60px - 80px);
+    }
+
+    body:not(:has(.navbar)) aside,
+    body:not(:has(.navbar)) main {
         max-height: calc(100vh - 80px);
     }
 }
 
+
+.list-group-item a,
+.list-group-item a:hover,
+.list-group-item a:focus {
+    color: var(--bs-list-group-color);
+}
+
+.list-group-item.active a,
+.list-group-item.active a:hover,
+.list-group-item.active a:focus {
+    color: var(--bs-list-group-active-color);
+}
+
 .min-vh-100 {
+    min-height: calc(100vh - 60px - 56px - 1rem) !important;
+}
+
+body:not(:has(.navbar)) .min-vh-100 {
     min-height: calc(100vh - 56px - 1rem) !important;
 }
 
 @media (max-width: 992px) {
     .min-vh-100 {
+        min-height: calc(100vh - 60px - 80px - 1rem) !important;
+    }
+
+    body:not(:has(.navbar)) .min-vh-100 {
         min-height: calc(100vh - 80px - 1rem) !important;
     }
+}
+
+.offcanvas-header,
+.navbar {
+    padding-top: 0;
+    padding-bottom: 0;
+    flex: none;
+}
+
+.offcanvas-header,
+.navbar,
+.navbar .container-fluid,
+.navbar .container-fluid .row,
+.navbar .container-fluid .row [class*="col-"] {
+    height: 60px;
+}
+
+.navbar .container-fluid .row [class*="col-"] {
+    align-content: center;
 }

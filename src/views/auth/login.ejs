@@ -1,0 +1,31 @@
+<div class="col-12 col-md-5 col-lg-3">
+  <div class="text-center mb-4">
+    <a class="navbar-brand d-inline-block" href="/">
+      <h1 class="fs-3 mb-3">
+        <i class="fa-solid fa-anchor fa-fw"></i> Anchor
+      </h1>
+    </a>
+  </div>
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h2>Login</h2>
+      <p class="mb-3">Don't have an account? <a href="/auth/register">Register</a></p>
+      <% if (locals.error) { %>
+        <div class="alert alert-danger">
+          <%= error %>
+        </div>
+      <% } %>
+      <form action="/auth/login" method="POST">
+        <div class="mb-3">
+          <label for="email" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Login</button>
+      </form>
+    </div>
+  </div>
+</div>
