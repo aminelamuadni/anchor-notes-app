@@ -307,7 +307,9 @@ async function fetchNotes() {
     if (!response.ok) throw new Error('Failed to load notes');
     const data = await response.json();
     data.notes.forEach((note) => addNoteToList(note, false, false));
-    elements.loadMoreButton.parentNode.style.display = data.hasMore ? 'block' : 'none';
+    if (elements.loadMoreButton && elements.loadMoreButton.parentNode) {
+      elements.loadMoreButton.parentNode.style.display = data.hasMore ? 'block' : 'none';
+    }
   } catch (error) {
     console.error('Error loading notes:', error);
     showAlert('Failed to load notes. Please try again.');
@@ -528,11 +530,21 @@ async function loadMoreNotes() {
  * Sets up event listeners for various elements.
  */
 function setupEventListeners() {
-  elements.noteTitle.addEventListener('input', handleNoteInput);
-  elements.newNoteButton.addEventListener('click', createNewNote);
-  elements.saveNoteButton.addEventListener('click', saveCurrentNote);
-  elements.loadMoreButton.addEventListener('click', loadMoreNotes);
-  elements.notesList.addEventListener('click', handleNotesListClick);
+  if (elements.noteTitle) {
+    elements.noteTitle.addEventListener('input', handleNoteInput);
+  }
+  if (elements.newNoteButton) {
+    elements.newNoteButton.addEventListener('click', createNewNote);
+  }
+  if (elements.saveNoteButton) {
+    elements.saveNoteButton.addEventListener('click', saveCurrentNote);
+  }
+  if (elements.loadMoreButton) {
+    elements.loadMoreButton.addEventListener('click', loadMoreNotes);
+  }
+  if (elements.notesList) {
+    elements.notesList.addEventListener('click', handleNotesListClick);
+  }
   window.addEventListener('beforeunload', handleWindowBeforeUnload);
   window.addEventListener('popstate', handleWindowPopState);
 }
