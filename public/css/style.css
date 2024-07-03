@@ -1,0 +1,26 @@
+aside,
+main {
+    overflow-y: auto;
+}
+
+aside,
+main {
+    max-height: calc(100vh - 56px);
+}
+
+@media (max-width: 992px) {
+    aside,
+    main {
+        max-height: calc(100vh - 80px);
+    }
+}
+
+.min-vh-100 {
+    min-height: calc(100vh - 56px - 1rem) !important;
+}
+
+@media (max-width: 992px) {
+    .min-vh-100 {
+        min-height: calc(100vh - 80px - 1rem) !important;
+    }
+}
