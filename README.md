@@ -28,6 +28,7 @@ Anchor aims to solve the inefficiency and inconvenience of manually transferring
 2. Install dependencies: `npm install`
 3. Set up environment variables:
    - `MONGODB_URI`: Your MongoDB connection string
+   - `SESSION_SECRET`: A secret key for session management
 4. Run the application: `npm run start-server`
 
 ## Contributing
