@@ -6,10 +6,16 @@
 </head>
 
 <body>
+    <% if (user) { %>
+        <%- include('partials/navbar') %>
+    <% } %>
     <div class="container-fluid">
         <div class="row">
-            <main class="col-12 pt-3 border-start">
-                <div class="min-vh-100 d-flex justify-content-center align-items-center">
+            <% if (user) { %>
+                <%- include('partials/sidebar') %>
+            <% } %>
+            <main class="<%= user ? 'col-lg-9' : 'col-12' %> pt-3 border-start">
+                <div class="min-vh-100 <%= user ? '' : 'd-flex justify-content-center align-items-center' %>">
                     <%- body %>
                 </div>
             </main>

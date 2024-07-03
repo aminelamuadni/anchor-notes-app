@@ -1,0 +1,78 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom py-0">
+    <div class="container-fluid">
+        <div class="row flex-fill">
+            <div class="col-lg-3">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-light d-lg-none" type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#sidebar" aria-controls="sidebar" aria-expanded="false">
+                            <i class="fa-solid fa-bars fa-fw"></i>
+                        </button>
+                        <a class="navbar-brand d-inline-block" href="#">
+                            <h1 class="fs-5 mb-0">
+                                <i class="fa-solid fa-anchor fa-fw"></i> Anchor
+                            </h1>
+                        </a>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <% if (user) { %>
+                            <button id="new-note-btn" class="btn btn-primary">
+                                <i class="fa-solid fa-plus fa-fw"></i>
+                            </button>
+                        <% } %>
+                        <button class="btn btn-light d-lg-none" type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false">
+                            <i class="fa-solid fa-bars fa-fw"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-9 border-start">
+                <div class="offcanvas-lg offcanvas-end" tabindex="-1" id="navbar"
+                    aria-labelledby="navbarOffcanvasLabel">
+                    <div class="offcanvas-header border-bottom">
+                        <h5 class="offcanvas-title" id="navbarOffcanvasLabel">
+
+                            <a class="navbar-brand d-inline-block" href="/">
+                                <span class="fs-5 mb-0">
+                                    <i class="fa-solid fa-anchor fa-fw"></i> Anchor
+                                </span>
+                            </a>
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"
+                            data-bs-target="#navbar"></button>
+                    </div>
+
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/">Home</a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav ms-auto">
+                            <% if (user) { %>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        <%= user.username %>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="/auth/logout">Logout</a></li>
+                                    </ul>
+                                </li>
+                            <% } else { %>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/auth/login">Login</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/auth/register">Register</a>
+                                </li>
+                            <% } %>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
