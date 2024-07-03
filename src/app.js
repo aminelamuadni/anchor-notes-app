@@ -5,6 +5,7 @@ const session = require('express-session');
 const connectDB = require('./config/database');
 const sessionConfig = require('./config/session');
 const createAuthRouter = require('./routes/authRoutes');
+const createNoteRouter = require('./routes/noteRoutes');
 const { attachUser } = require('./middleware/auth');
 
 /**
@@ -28,6 +29,8 @@ async function createApp() {
   app.use(express.static(path.join(__dirname, '..', 'public')));
   app.use('/bootstrap', express.static(path.join(__dirname, '..', 'node_modules/bootstrap/dist')));
   app.use('/fontawesome', express.static(path.join(__dirname, '..', 'node_modules/@fortawesome/fontawesome-free')));
+  app.use('/timeago.js', express.static(path.join(__dirname, '..', 'node_modules/timeago.js/dist')));
+  app.use('/simplemde', express.static(path.join(__dirname, '..', 'node_modules/simplemde/dist')));
   app.use(session(sessionConfig));
 
   // View engine setup
@@ -37,9 +40,14 @@ async function createApp() {
 
   // Routes
   app.use('/auth', createAuthRouter());
+  app.use('/notes', createNoteRouter());
 
   app.get('/', attachUser, (req, res) => {
-    res.render('welcome', { title: '' });
+    if (req.session.user) {
+      return res.redirect('/notes');
+    } else {
+      return res.render('welcome', { title: '' });
+    }
   });
 
   return app;
